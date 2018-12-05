@@ -1,23 +1,22 @@
-AICP-mordiford
-====================================
+# AICP-mordiford
 
+## Download the Source
 
-Download the Source
-===================
+Please read the [AOSP building instructions](http://source.android.com/source/index.html) or [Our build instruction in Japanese](https://dev.maud.io/entry/2018/03/19/howto-build-lineageos-15-1/) before proceeding.
 
-Please read the [AOSP building instructions](http://source.android.com/source/index.html) before proceeding.
-
-Initializing Repository
------------------------
+### Initializing Repository
 
 Repo initialization:
 
-    $ repo init -u https://github.com/mordiford/platform_manifest.git -b o8.1_r52
-
+```
+repo init -u https://github.com/mordiford/platform_manifest.git -b o8.1_r52
+```
 
 sync repo :
 
-    $ repo sync
+```
+repo sync -f -j8 --force-sync --no-clone-bundle --no-tags
+```
 
 Some info on how to customize your sync:
 
@@ -45,22 +44,27 @@ Smallest/fastest sync:
 
 ***
 
-Building
---------
+## Building
 
 After the sync is finished, please read the [instructions from the Android site](http://s.android.com/source/building.html) on how to build.
 
-    . build/envsetup.sh
-    brunch
-
+```
+. build/envsetup.sh
+brunch
+```
 
 You can also build (and see how long it took) for specific devices like this:
 
-    . build/envsetup.sh
-    time brunch angler
+```
+. build/envsetup.sh
+time brunch angler
+```
 
-If you want you can make the lineage SU add-on by doing:
-    lunch aicp_arm64-eng (for arm64 target)
-    mka addonsu
+If you want you can make the lineage SU add-on by doing (for arm64 target):
+
+```
+lunch aicp_arm64-eng
+mka addonsu
+```
 
 Remember to `make clobber` every now and then!
